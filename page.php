@@ -34,24 +34,25 @@ if (!$result) {
 </head>
 
 <body>
-<?php
-include "includes/navbar.php";
+<?php include "includes/navbar.php";?>
+<section>
+    <?php
+    if ($result) {
+        echo "<h1>" . $result['title'] ."</h1>";
+        echo "<p>" . $result['description'] . "</p>";
+    }
 
-if ($result) {
-    echo "<h1>" . $result['title'] ."</h1>";
-    echo "<p>" . $result['description'] . "</p>";
-}
+    echo '<form id="del" method="post"><button type="submit" name="submit" id="submit">Supprimer</button></form>';
 
-echo '<form id="del" method="post"><button type="submit" name="submit" id="submit">Supprimer</button></form>';
-
-if (isset($_POST['submit'])) {
-    $delRequest = $db->prepare("DELETE FROM todos WHERE id = :id");
-    $delRequest->execute(["id" => $id]);
-    header('Location: index.php');
-    exit;
-}
-ob_end_flush();
-?>
+    if (isset($_POST['submit'])) {
+        $delRequest = $db->prepare("DELETE FROM todos WHERE id = :id");
+        $delRequest->execute(["id" => $id]);
+        header('Location: index.php');
+        exit;
+    }
+    ob_end_flush();
+    ?>
+</section>
 <script src="/js/script.js"></script>
 </body>
 </html>

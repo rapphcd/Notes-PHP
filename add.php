@@ -17,34 +17,36 @@ if (empty($_SESSION['id']) && $_SESSION['perms'] != 5) {
 
 <body>
 <?php include "includes/navbar.php"; ?>
-<form id="add" method="post" enctype="multipart/form-data">
-    <input type="text" id="title" name="title" placeholder="Nom" required>
-    <input type="text" id="description" name="description" placeholder="Description" required>
-    <input type="submit" name="submit" id="submit">
-</form>
-<?php
+<section>
+    <form id="add" method="post" enctype="multipart/form-data">
+        <input type="text" id="title" name="title" placeholder="Nom" required>
+        <input type="text" id="description" name="description" placeholder="Description" required>
+        <input type="submit" name="submit" id="submit">
+    </form>
+    <?php
 
-include 'includes/database.php';
+    include 'includes/database.php';
 
-if (isset($_POST['submit'])) {
+    if (isset($_POST['submit'])) {
 
-    extract($_POST);
+        extract($_POST);
 
-    if (empty($title) || empty($description)) {
-        echo "Veuillez remplir tout les champs";
-        return;
+        if (empty($title) || empty($description)) {
+            echo "Veuillez remplir tout les champs";
+            return;
+        }
+
+        global $db;
+        $q = $db->prepare("INSERT INTO todos (title,user,description) VALUES(:title,:user,:description)");
+        $q->execute([
+                'title' => $title,
+                'user' => $_SESSION['id'],
+                'description' => $description
+        ]);
+        echo " ADDED";
     }
-
-    global $db;
-    $q = $db->prepare("INSERT INTO todos (title,user,description) VALUES(:title,:user,:description)");
-    $q->execute([
-            'title' => $title,
-            'user' => $_SESSION['id'],
-            'description' => $description
-    ]);
-    echo " ADDED";
-}
-?>
+    ?>
+</section>
 <script src="/js/script.js"></script>
 </body>
 
