@@ -9,7 +9,7 @@ include 'includes/database.php';
 global $db;
 
 if (isset($_POST['submit']) && !empty($_POST['id'])) {
-    $delRequest = $db->prepare("DELETE FROM todos WHERE id = :id AND user = :user");
+    $delRequest = $db->prepare("DELETE FROM notes WHERE id = :id AND user = :user");
     $delRequest->execute([
             "id" => $_POST['id'],
             "user" => $_SESSION['id']
@@ -19,7 +19,7 @@ if (isset($_POST['submit']) && !empty($_POST['id'])) {
 }
 
 if (isset($_POST['addnote'])) {
-    $addrequest = $db->prepare("INSERT INTO `todos`(`user`, `title`, `description`) VALUES (:userid,'New Note','...')");
+    $addrequest = $db->prepare("INSERT INTO `notes`(`user`, `title`, `description`) VALUES (:userid,'New Note','...')");
     $addrequest->execute([
             "userid" => $_SESSION['id']
     ]);
@@ -28,7 +28,7 @@ if (isset($_POST['addnote'])) {
 }
 
 if (isset($_POST['save']) && !empty($_POST['id'])) {
-    $save = $db->prepare("UPDATE `todos` SET `title`= :title,`description`= :description WHERE id = :id");
+    $save = $db->prepare("UPDATE `notes` SET `title`= :title,`description`= :description WHERE id = :id");
     $save->execute([
             "id" => $_POST['id'],
             "title" => $_POST['title'],
@@ -57,7 +57,7 @@ if (isset($_POST['save']) && !empty($_POST['id'])) {
             <div class="content">
                 <?php
                 if (!empty($_SESSION['id'])) {
-                    $q = $db->query("SELECT * FROM todos WHERE user = " . $_SESSION["id"] . " ORDER BY createdat ASC");
+                    $q = $db->query("SELECT * FROM notes WHERE user = " . $_SESSION["id"] . " ORDER BY createdat ASC");
                     while ($todo = $q->fetch()) { ?>
                         <div class="todo-element" id="<?= $todo['id'] ?>"
                              onclick="selectTodo(<?= $todo['id'] ?>, '<?= addslashes($todo['title']) ?>', '<?= addslashes($todo['description']) ?>')">
