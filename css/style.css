@@ -30,6 +30,15 @@ section {
     width: 100%;
 }
 
+input:focus, textarea:focus {
+    border: none;
+    outline: none;
+}
+
+textarea {
+    resize: none;
+}
+
 .todos-container {
     display: flex;
     justify-content: start;
@@ -141,13 +150,16 @@ section {
     flex-direction: column;
     height: 95%;
     width: 100%;
-    margin: 1rem;
+    margin: 2rem;
     color: white;
     word-break: break-all;
     overflow-wrap: break-word;
 }
 
 .preview-title {
+    margin-top: 1rem;
+    font-weight: bold;
+    font-size: 3rem;
     height: 10%;
     width: 100%;
     background: transparent;
@@ -155,6 +167,9 @@ section {
 }
 
 .preview-description {
+    scrollbar-width: thin;
+    font-size: 1.1rem;
+    margin: 1rem 2rem 1rem 2rem;
     height: 90%;
     text-justify: auto;
     overflow: auto;
@@ -181,4 +196,29 @@ section {
     #preview {
         width: 90%;
     }
+}
+
+.login-content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 100px);
+}
+
+.login-content form {
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.login-content input {
+    padding: 1rem;
+    border-radius: 5rem;
+    border: 5px solid transparent;
+}
+
+.login-content input:focus {
+    border: 5px solid #bcbcbc;
 }

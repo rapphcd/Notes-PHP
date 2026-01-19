@@ -4,16 +4,14 @@
         $currentPage = basename($_SERVER['PHP_SELF']);
 
         if (empty($_SESSION['id'])) {
-            echo "<a class='navitems' href='login.php'>Login</a>";
-            if ($currentPage != 'index.php') {
-                echo "<a class='navitems' href='index.php'>Accueil</a>";
+            if ($currentPage != 'login.php') {
+                echo "<a class='navitems' href='login.php'>Login</a>";
             }
-            echo "<a class='navitems' href='register.php'>Register</a>";
+            if ($currentPage != 'register.php') {
+                echo "<a class='navitems' href='register.php'>Register</a>";
+            }
         } else {
             echo "<a class='navitems' href='deconnexion.php'>Log out</a>";
-            if ($currentPage != 'index.php') {
-                echo "<a class='navitems' href='index.php'>Accueil</a>";
-            }
         }
 
         ?>
