@@ -51,29 +51,29 @@ if (isset($_POST['save']) && !empty($_POST['id'])) {
 
 <body>
 <?php include "includes/navbar.php"; ?>
-<section id="todos">
-    <div class="todos-container">
-        <div class="todo-list">
+<section id="notes">
+    <div class="notes-container">
+        <div class="note-list">
             <div class="content">
                 <?php
                 if (!empty($_SESSION['id'])) {
                     $q = $db->query("SELECT * FROM notes WHERE user = " . $_SESSION["id"] . " ORDER BY createdat ASC");
-                    while ($todo = $q->fetch()) { ?>
-                        <div class="todo-element" id="<?= $todo['id'] ?>"
-                             onclick="selectTodo(<?= $todo['id'] ?>, '<?= addslashes($todo['title']) ?>', '<?= addslashes($todo['description']) ?>')">
-                            <div class="todo-infos">
-                                <h2> <?= $todo["title"] ?></h2>
+                    while ($note = $q->fetch()) { ?>
+                        <div class="note-element" id="<?= $note['id'] ?>"
+                             onclick="selectNote(<?= $note['id'] ?>, '<?= addslashes($note['title']) ?>', '<?= addslashes($note['description']) ?>')">
+                            <div class="note-infos">
+                                <h2> <?= $note["title"] ?></h2>
                             </div>
-                            <div class="todo-actions">
+                            <div class="note-actions">
                                 <form id="del" method="post">
-                                    <input type="hidden" name="id" value="<?= $todo['id'] ?>">
-                                    <button class="del-todo" type="submit" name="submit" id="submit">DEL</button>
+                                    <input type="hidden" name="id" value="<?= $note['id'] ?>">
+                                    <button class="del-note" type="submit" name="submit" id="submit">DEL</button>
                                 </form>
                             </div>
                         </div>
                     <?php } ?>
-                    <form id="addnote" method="post" class="add-todo-container">
-                        <button type="submit" name="addnote" id="addnote" class="todo-element">ADD</button>
+                    <form id="addnote" method="post" class="add-note-container">
+                        <button type="submit" name="addnote" id="addnote" class="note-element">ADD</button>
                     </form>
                 <?php } ?>
             </div>

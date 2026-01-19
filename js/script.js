@@ -1,13 +1,13 @@
 let selectedElement = null;
 
-function selectTodo(id, title, description, done) {
+function selectNote(id, title, description, done) {
     let element = document.getElementById(id)
     if (selectedElement !== element.id) {
         if (selectedElement != null) {
-            let selected = document.getElementsByClassName("selected-todo")[0];
-            selected.classList.remove("selected-todo");
+            let selected = document.getElementsByClassName("selected-note")[0];
+            selected.classList.remove("selected-note");
         }
-        element.classList.add("selected-todo");
+        element.classList.add("selected-note");
         selectedElement = element.id;
         let preview = document.getElementById("preview");
 

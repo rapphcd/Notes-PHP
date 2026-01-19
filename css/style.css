@@ -39,7 +39,7 @@ textarea {
     resize: none;
 }
 
-.todos-container {
+.notes-container {
     display: flex;
     justify-content: start;
     height: calc(100vh - 100px);
@@ -50,7 +50,7 @@ textarea {
     width: 100%;
 }
 
-.todo-list {
+.note-list {
     display: flex;
     justify-content: space-around;
     height: calc(100vh - 100px);
@@ -74,13 +74,13 @@ textarea {
 }
 
 
-.add-todo-container {
+.add-note-container {
     display: flex;
     width: 100%;
     justify-content: center;
 }
 
-.todo-element {
+.note-element {
     cursor: pointer;
     display: flex;
     flex-direction: row;
@@ -92,18 +92,18 @@ textarea {
     background-color: var(--third);
 }
 
-.todo-infos {
+.note-infos {
     display: flex;
     flex-direction: column;
 }
 
-.todo-actions {
+.note-actions {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-.del-todo {
+.del-note {
     cursor: pointer;
     border: none;
     background-color: transparent;
@@ -111,11 +111,11 @@ textarea {
     border-radius: 1rem;
 }
 
-.del-todo:hover{
+.del-note:hover{
     background-color: rgba(0,0,0, .1);
 }
 
-.see-todo {
+.see-note {
     cursor: pointer;
     border: none;
     background-color: transparent;
@@ -123,11 +123,11 @@ textarea {
     border-radius: 1rem;
 }
 
-.see-todo:hover{
+.see-note:hover{
     background-color: rgba(0,0,0, .1);
 }
 
-.selected-todo {
+.selected-note {
     background-color: rgba(0,0,0, .5);
 }
 
@@ -179,17 +179,17 @@ textarea {
 }
 
 @media screen and (max-width: 700px) {
-    #todos {
+    #notes {
         display: flex;
         flex-direction: column;
     }
 
-    .todos-container {
+    .notes-container {
         width: 90%;
         height: fit-content;
     }
 
-    .todo-list {
+    .note-list {
         height: fit-content;
     }
 
