@@ -32,7 +32,7 @@ if (isset($_POST['submit']) && !empty($_POST['id'])) {
             <div class="content">
                 <?php
                 if(!empty($_SESSION['id'])){
-                    $q = $db->query("SELECT * FROM todos WHERE user = " . $_SESSION["id"] . " ORDER BY title ASC");
+                    $q = $db->query("SELECT * FROM todos WHERE user = " . $_SESSION["id"] . " ORDER BY createdat ASC");
                     while ($todo = $q->fetch()) { ?>
                         <div class="todo-element" id="<?= $todo['id'] ?>"
                              onclick="selectTodo(<?= $todo['id'] ?>, '<?= addslashes($todo['title']) ?>', '<?= addslashes($todo['description']) ?>')">
@@ -48,7 +48,15 @@ if (isset($_POST['submit']) && !empty($_POST['id'])) {
                         </div>
                         <?php
                     }
-                    echo '<div class="add-todo-container"><a class="todo-element" href="add.php">ADD</a></div>';
+                    echo '<form id="addnote" method="post" class="add-todo-container"><button type="submit" name="addnote" id="addnote" class="todo-element">ADD</button></form>';
+                    if (isset($_POST['addnote'])) {
+                        $addrequest = $db->prepare("INSERT INTO `todos`(`user`, `title`, `description`) VALUES (:userid,'New Note','...')");
+                        $addrequest->execute([
+                                "userid" => $_SESSION['id']
+                        ]);
+                        header('Location: index.php');
+                        exit;
+                    }
                 }
                 ?>
             </div>
@@ -57,6 +65,18 @@ if (isset($_POST['submit']) && !empty($_POST['id'])) {
     <div id="preview">
 
     </div>
+
+    <?php
+    if (isset($_POST['save']) && !empty($_POST['id'])) {
+        $save = $db->prepare("UPDATE `todos` SET `title`= :title,`description`= :description WHERE id = :id");
+        $save->execute([
+                "id" => $_POST['id'],
+                "title" => $_POST['title'],
+                "description" => $_POST['description'],
+        ]);
+        header('Location: index.php');
+    }
+    ?>
 </section>
 <script src="/js/script.js"></script>
 </body>

@@ -11,7 +11,6 @@ function selectTodo(id, title, description, done) {
         selectedElement = element.id;
         let preview = document.getElementById("preview");
 
-
-        preview.innerHTML = `<div class="preview-content"><div class="preview-title"><h1>${title}</h1></div><div class="preview-description"><p>${description}</p></div></div>`;
+        preview.innerHTML = `<form id="preview" method="post" class="preview-content"><input type="text" name="title" id="title" class="preview-title" value="${title}"/><textarea name="description" id="description" class="preview-description">${description}</textarea><input type="hidden" name="id" value="${id}"><button type="submit" id="save" name="save">SAVE<button/> </form>`;
     }
 }

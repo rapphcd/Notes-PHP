@@ -12,6 +12,11 @@
     font-family: Verdana, sans-serif;
 }
 
+button {
+    background-color: transparent;
+    border: none;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -132,6 +137,8 @@ section {
 }
 
 .preview-content {
+    display: flex;
+    flex-direction: column;
     height: 95%;
     width: 100%;
     margin: 1rem;
@@ -142,12 +149,18 @@ section {
 
 .preview-title {
     height: 10%;
+    width: 100%;
+    background: transparent;
+    border: none;
 }
 
 .preview-description {
     height: 90%;
     text-justify: auto;
     overflow: auto;
+    width: 100%;
+    background: transparent;
+    border: none;
 }
 
 @media screen and (max-width: 700px) {
