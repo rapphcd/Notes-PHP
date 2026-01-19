@@ -20,7 +20,7 @@ if (empty($_SESSION['id']) && $_SESSION['perms'] != 5) {
 <section>
     <form id="add" method="post" enctype="multipart/form-data">
         <input type="text" id="title" name="title" placeholder="Nom" required>
-        <input type="text" id="description" name="description" placeholder="Description" required>
+        <textarea id="description" name="description" rows="4" cols="50"></textarea>
         <input type="submit" name="submit" id="submit">
     </form>
     <?php

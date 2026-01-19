@@ -12,6 +12,6 @@ function selectTodo(id, title, description, done) {
         let preview = document.getElementById("preview");
 
 
-        preview.innerHTML = `<div class="preview-content"><h1>${title}</h1><p>${description}</p></div>`;
+        preview.innerHTML = `<div class="preview-content"><div class="preview-title"><h1>${title}</h1></div><div class="preview-description"><p>${description}</p></div></div>`;
     }
 }

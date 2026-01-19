@@ -1,3 +1,5 @@
+
+
 * {
     margin: 0;
     padding: 0;
@@ -18,10 +20,6 @@ section {
     width: 100%;
 }
 
-#todos {
-
-}
-
 .todos-container {
     display: flex;
     justify-content: start;
@@ -37,7 +35,7 @@ section {
     display: flex;
     justify-content: space-around;
     height: calc(100vh - 100px);
-    background-color: rgba(0,0,0, .5);
+    background-color: rgba(0, 0, 0, .5);
     z-index: 100;
     color: white;
     border-radius: 2.5rem;
@@ -68,6 +66,7 @@ section {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    transition: ease-in-out 0.15s;
     align-items: center;
     padding: 0.5rem;
     border-radius: 1rem;
@@ -114,14 +113,53 @@ section {
 }
 
 #preview {
+    transition: ease-in-out 0.15s;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 80%;
+    width: 200%;
     height: calc(100vh - 100px);
     z-index: 100;
     color: white;
     margin: 0.5rem;
     background-color: rgba(0,0,0, .5);
     border-radius: 2.5rem;
+}
+
+.preview-content {
+    height: 95%;
+    width: 100%;
+    margin: 1rem;
+    word-break: break-all;
+    overflow-wrap: break-word;
+}
+
+.preview-title {
+    height: 10%;
+}
+
+.preview-description {
+    height: 90%;
+    text-justify: auto;
+    overflow: auto;
+}
+
+@media screen and (max-width: 700px) {
+    #todos {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .todos-container {
+        width: 90%;
+        height: fit-content;
+    }
+
+    .todo-list {
+        height: fit-content;
+    }
+
+    #preview {
+        width: 90%;
+    }
 }

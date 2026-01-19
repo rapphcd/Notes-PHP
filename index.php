@@ -11,14 +11,26 @@
 </head>
 
 <body>
-<?php include "includes/navbar.php"; ?>
+<?php include "includes/navbar.php";
+
+include 'includes/database.php';
+global $db;
+
+if (isset($_POST['submit']) && !empty($_POST['id'])) {
+    $delRequest = $db->prepare("DELETE FROM todos WHERE id = :id AND user = :user");
+    $delRequest->execute([
+            "id" => $_POST['id'],
+            "user" => $_SESSION['id']
+    ]);
+    header('Location: index.php');
+    exit;
+}
+?>
 <section id="todos">
     <div class="todos-container">
         <div class="todo-list">
             <div class="content">
                 <?php
-                include 'includes/database.php';
-                global $db;
                 if(!empty($_SESSION['id'])){
                     $q = $db->query("SELECT * FROM todos WHERE user = " . $_SESSION["id"] . " ORDER BY title ASC");
                     while ($todo = $q->fetch()) { ?>
@@ -26,19 +38,12 @@
                              onclick="selectTodo(<?= $todo['id'] ?>, '<?= addslashes($todo['title']) ?>', '<?= addslashes($todo['description']) ?>')">
                             <div class="todo-infos">
                                 <h2> <?= $todo["title"] ?></h2>
-                                <p><?= $todo["description"] ?></p>
                             </div>
                             <div class="todo-actions">
-                                <form id="del" method="post"><button class="del-todo" type="submit" name="submit" id="submit">DEL</button></form>
-                                <?php
-
-                                if (isset($_POST['submit'])) {
-                                    $delRequest = $db->prepare("DELETE FROM todos WHERE id = :id");
-                                    $delRequest->execute(["id" => $todo['id']]);
-                                    header('Location: index.php');
-                                    exit;
-                                }
-                                ?>
+                                <form id="del" method="post">
+                                    <input type="hidden" name="id" value="<?= $todo['id'] ?>">
+                                    <button class="del-todo" type="submit" name="submit" id="submit">DEL</button>
+                                </form>
                             </div>
                         </div>
                         <?php
