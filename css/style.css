@@ -1,16 +1,21 @@
-
+:root {
+    --bg: rgb(51, 53, 61);
+    --second: rgb(95, 97, 104);
+    --third: rgb(66, 68, 74);
+}
 
 * {
     margin: 0;
     padding: 0;
     text-decoration: none;
-    color: black;
+    color: white;
     font-family: Verdana, sans-serif;
 }
 
 body {
     margin: 0;
     padding: 0;
+    background-color: var(--bg);
 }
 
 section {
@@ -35,7 +40,7 @@ section {
     display: flex;
     justify-content: space-around;
     height: calc(100vh - 100px);
-    background-color: rgba(0, 0, 0, .5);
+    background-color: var(--second);
     z-index: 100;
     color: white;
     border-radius: 2.5rem;
@@ -70,7 +75,7 @@ section {
     align-items: center;
     padding: 0.5rem;
     border-radius: 1rem;
-    background-color: rgba(0,0,0, .1);
+    background-color: var(--third);
 }
 
 .todo-infos {
@@ -109,7 +114,7 @@ section {
 }
 
 .selected-todo {
-    background-color: rgba(0,0,0, .2);
+    background-color: rgba(0,0,0, .5);
 }
 
 #preview {
@@ -122,7 +127,7 @@ section {
     z-index: 100;
     color: white;
     margin: 0.5rem;
-    background-color: rgba(0,0,0, .5);
+    background-color: var(--second);
     border-radius: 2.5rem;
 }
 
@@ -130,6 +135,7 @@ section {
     height: 95%;
     width: 100%;
     margin: 1rem;
+    color: white;
     word-break: break-all;
     overflow-wrap: break-word;
 }
