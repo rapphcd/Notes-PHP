@@ -73,7 +73,7 @@ if (isset($_POST['save']) && !empty($_POST['id'])) {
                         </div>
                     <?php } ?>
                     <form id="addnote" method="post" class="add-note-container">
-                        <button type="submit" name="addnote" id="addnote" class="note-element">ADD</button>
+                        <button type="submit" name="addnote" id="addnote" class="addnote">ADD</button>
                     </form>
                 <?php } ?>
             </div>

@@ -54,8 +54,8 @@ ob_end_flush();
 <section>
     <div class="login-content">
         <form id="form" method="post">
-            <input type="text" name="username" id="username" placeholder="Username" required>
-            <input type="password" name="password" id="password" placeholder="Password" required>
+            <input type="text" name="username" id="username" placeholder="Username" autocomplete="off" required>
+            <input type="password" name="password" id="password" placeholder="Password" autocomplete="off" required>
             <button type="submit" name="submit" id="submit">LOGIN</button>
         </form>
     </div>

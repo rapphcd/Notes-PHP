@@ -70,8 +70,8 @@ if (isset($_POST['submit'])) {
 <section>
     <div class="login-content">
         <form id="form" method="post">
-            <input type="text" name="username" id="username" placeholder="Username" required>
-            <input type="password" name="password" id="password" placeholder="Password" required>
+            <input type="text" name="username" id="username" placeholder="Username" autocomplete="off" required>
+            <input type="password" name="password" id="password" placeholder="Password" autocomplete="off" required>
             <button type="submit" name="submit" id="submit" value="Register">REGISTER</button>
         </form>
     </div>

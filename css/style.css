@@ -1,15 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
 :root {
-    --bg: rgb(51, 53, 61);
-    --second: rgb(95, 97, 104);
-    --third: rgb(66, 68, 74);
+    --gray: rgb(234, 232, 228, 0.08);
+    --prim: rgb(203, 195, 179, 0.2);
+    --text: rgb(234, 232, 228);
+    --background: rgb(18, 16, 13);
+    --primary: rgb(203, 195, 179);
+    --secondary: rgb(96, 84, 62);
+    --accent: rgb(175, 158, 125);
 }
 
 * {
     margin: 0;
     padding: 0;
     text-decoration: none;
-    color: white;
-    font-family: Verdana, sans-serif;
+    font-family: Nunito, sans-serif;
+    color: var(--text);
 }
 
 button {
@@ -20,7 +26,7 @@ button {
 body {
     margin: 0;
     padding: 0;
-    background-color: var(--bg);
+    background-color: var(--background);
 }
 
 section {
@@ -54,7 +60,7 @@ textarea {
     display: flex;
     justify-content: space-around;
     height: calc(100vh - 100px);
-    background-color: var(--second);
+    background-color: var(--gray);
     z-index: 100;
     color: white;
     border-radius: 2.5rem;
@@ -81,7 +87,6 @@ textarea {
 }
 
 .note-element {
-    cursor: pointer;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -89,7 +94,11 @@ textarea {
     align-items: center;
     padding: 0.5rem;
     border-radius: 1rem;
-    background-color: var(--third);
+    background-color: var(--background);
+}
+
+.note-element:hover {
+    background-color: var(--prim);
 }
 
 .note-infos {
@@ -115,6 +124,19 @@ textarea {
     background-color: rgba(0,0,0, .1);
 }
 
+.addnote{
+    transition: ease-in-out 0.15s;
+    padding: 0.6rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    border: 1px solid transparent;
+    background-color: var(--background);
+}
+
+.addnote:hover {
+    border: 1px solid var(--secondary);
+}
+
 .see-note {
     cursor: pointer;
     border: none;
@@ -127,8 +149,12 @@ textarea {
     background-color: rgba(0,0,0, .1);
 }
 
-.selected-note {
-    background-color: rgba(0,0,0, .5);
+.selected-note, .selected-note:hover {
+    background-color: var(--primary);
+}
+
+.selected-note .note-infos *, .selected-note .note-actions * {
+    color: black;
 }
 
 #preview {
@@ -141,7 +167,19 @@ textarea {
     z-index: 100;
     color: white;
     margin: 0.5rem;
-    background-color: var(--second);
+    background-color: var(--gray);
+    border-radius: 2.5rem;
+}
+
+#previewform {
+    transition: ease-in-out 0.15s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: calc(100vh - 100px);
+    z-index: 100;
+    margin: 0.5rem;
     border-radius: 2.5rem;
 }
 
@@ -207,6 +245,10 @@ textarea {
 }
 
 .login-content form {
+    background-color: var(--gray);
+    padding: 3rem;
+    border-radius: 1.5rem;
+    border: 1px solid var(--secondary);
     height: 30%;
     display: flex;
     flex-direction: column;
@@ -216,9 +258,24 @@ textarea {
 .login-content input {
     padding: 1rem;
     border-radius: 5rem;
-    border: 5px solid transparent;
+    border: 4px solid transparent;
+    color: black;
 }
 
 .login-content input:focus {
-    border: 5px solid #bcbcbc;
+    border: 4px solid var(--primary);
+}
+
+.login-content button {
+    transition: ease-in-out 0.2s;
+    padding: 1rem;
+    border-radius: 4rem;
+    cursor: pointer;
+    background-color: var(--secondary);
+    font-weight: bold;
+}
+
+.login-content button:hover {
+    background-color: var(--accent);
+    color: black;
 }
