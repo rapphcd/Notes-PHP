@@ -279,3 +279,7 @@ textarea {
     background-color: var(--accent);
     color: black;
 }
+
+.hidden * {
+    display: none;
+}

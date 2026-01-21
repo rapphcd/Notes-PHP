@@ -59,8 +59,8 @@ if (isset($_POST['save']) && !empty($_POST['id'])) {
                 if (!empty($_SESSION['id'])) {
                     $q = $db->query("SELECT * FROM notes WHERE user = " . $_SESSION["id"] . " ORDER BY createdat ASC");
                     while ($note = $q->fetch()) { ?>
-                        <div class="note-element" id="<?= $note['id'] ?>"
-                             onclick="selectNote(<?= $note['id'] ?>, '<?= addslashes($note['title']) ?>', '<?= addslashes($note['description']) ?>')">
+                        <div class="note-element" id="<?= $note['id'] ?>" data-desc="<?= $note['description'] ?>" data-tit="<?= $note['title'] ?>"
+                             onclick="selectNote(this)">
                             <div class="note-infos">
                                 <h2> <?= $note["title"] ?></h2>
                             </div>
@@ -80,7 +80,14 @@ if (isset($_POST['save']) && !empty($_POST['id'])) {
         </div>
     </div>
     <div id="preview">
+        <form id="previewform" method="post" class="hidden">
+            <div class="preview-content">
+                <input type="text" name="title" id="title" class="preview-title" autocomplete="off"/>
+                <textarea name="description" id="description" autocomplete="off" class="preview-description">
 
+                </textarea>
+            </div>
+        </form>
     </div>
 </section>
 <script src="/js/script.js"></script>
